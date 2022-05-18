@@ -15,7 +15,6 @@ public class Task extends RecursiveTask<TreeSet<Link>> {
     @Override
     protected TreeSet<Link> compute() {
 
-//      Если убрать эту строчку, ForkJoinPool работает в одном потоке. Непонятное.
         System.out.print("###### ");
 
         TreeSet<Link> taskRezult = new TreeSet<>();
@@ -51,7 +50,7 @@ public class Task extends RecursiveTask<TreeSet<Link>> {
                 catch (Exception e)
                 {
                     if (!Objects.equals(e.getMessage(), "null")){
-                    System.out.println("56_task: ОШИБКА = ERROR  " + e.getMessage());
+                    System.out.println("53_task: ОШИБКА = ERROR  " + e.getMessage());
                     }
                 }
             }

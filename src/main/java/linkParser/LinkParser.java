@@ -13,8 +13,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LinkParser {
-    String linkPath; //переданная ссылка в Parser
-    static String linkGlobal; //Глобальная начальная ссылка
+    private final String linkPath; //переданная ссылка в Parser
+    private static String linkGlobal; //Глобальная начальная ссылка
     int step;
 
 //    String linkBP; // переданная ссылка без "/" в конце
@@ -33,7 +33,7 @@ public class LinkParser {
 
         System.out.println("СКАНИРУЮ ССЫЛКУ " + linkPath + "  поток: " + Thread.currentThread().getName());
 
-//          TIMEOUT чтобы нас сервер не заблокировал за частые подключения
+//          TIMEOUT чтобы сервер не заблокировал за частые подключения
         TimeUnit.MILLISECONDS.sleep(150);
 
         Pattern pattern1 = Pattern.compile("^/"); // выдернем все ссылки локальные
@@ -53,7 +53,7 @@ public class LinkParser {
                 if (matcher1.find()) {
 
                     if (link.attr("href").equals("/")) {
-//                          если ссылка пустая (на саму себя) - пропускаем
+//                      если ссылка пустая (на саму себя) - пропускаем
                         continue;
                     } else {
                         String a = linkPath.split("/")[linkPath.split("/").length - 1];
@@ -85,7 +85,7 @@ public class LinkParser {
                                     continue;
                                 }
                             } catch (Exception e) {
-                                System.out.println("99link: " + e.getMessage() + " в " + link.attr("href"));
+                                System.out.println("88_linkParser: " + e.getMessage() + " в " + link.attr("href"));
                             }
                         }
                     }
@@ -102,12 +102,12 @@ public class LinkParser {
                         }
 
                     } catch (Exception e) {
-                        System.out.println("112e: " + e.getMessage() + " в " + link.attr("href"));
+                        System.out.println("105_linkParser: " + e.getMessage() + " в " + link.attr("href"));
                     }
                 }
             }
         } catch (HttpStatusException o) {
-            System.out.println("121o: " + o.getMessage());
+            System.out.println("110_linkParser: " + o.getMessage());
         }
         return linkSet;
     }

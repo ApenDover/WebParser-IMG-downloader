@@ -4,7 +4,6 @@
 * telegram @ApenDover
 * */
 
-
 import linkParser.Link;
 import linkParser.Task;
 import org.jsoup.Jsoup;

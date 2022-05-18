@@ -10,7 +10,7 @@ import java.util.TreeSet;
 
 public class LogWritter {
 
-    private String path;
+    private final String path;
     private TreeSet<Link> setToWrite;
     private ArrayList<String> listToWrite;
 
